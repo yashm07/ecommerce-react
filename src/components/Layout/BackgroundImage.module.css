@@ -1,0 +1,5 @@
+#image {
+  border-radius: 1.2em;
+  object-fit: cover;
+  max-width: 100%;
+}
