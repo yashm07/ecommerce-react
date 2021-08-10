@@ -1,0 +1,28 @@
+.logo {
+  max-width: 120px;
+}
+
+#cart {
+  color: rgb(104, 104, 104);
+  font-weight: 500;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+#icon {
+  margin-left: 5px;
+  width: 22px;
+  height: 22px;
+  color: rgb(104, 104, 104);
+}
+
+#navbar {
+  margin: 30px 0;
+}
+
+@media (max-width: 480px) {
+  #navbar {
+    margin: 20px 0;
+  }
+}
