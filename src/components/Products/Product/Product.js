@@ -17,7 +17,9 @@ const Product = (props) => {
           <Card.Title className={classes.title}>
             {props.name} <span className={classes.price}>{price}</span>
           </Card.Title>
-          <Card.Text>{props.description}</Card.Text>
+          <Card.Text className={classes.description}>
+            {props.description}
+          </Card.Text>
           <ProductAmount />
           <Button variant="primary" className={classes.addcart}>
             ADD TO CART

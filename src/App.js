@@ -6,6 +6,7 @@ import Header from "./components/Layout/Header";
 // TEMPORARY
 import Container from "react-bootstrap/Container";
 import Products from "./components/Products/Products";
+import Footer from "./components/Layout/Footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header />
         <Products />
       </Container>
+      <Footer />
     </Fragment>
   );
 }

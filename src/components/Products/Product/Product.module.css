@@ -21,3 +21,7 @@
   border-radius: 0;
   background: rgb(65, 65, 65);
 }
+
+.description {
+  font-weight: 300;
+}
