@@ -1,0 +1,23 @@
+.price {
+  float: right;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.card {
+  border: none;
+}
+
+.addcart {
+  float: right;
+  font-size: 0.85em;
+  padding: 10px 25px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  background: rgb(65, 65, 65);
+}

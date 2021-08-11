@@ -2,20 +2,26 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-import image from "../../../assets/testimage.jpeg";
+import classes from "./Product.module.css";
+
+import ProductAmount from "../../UI/ProductAmount";
 
 const Product = (props) => {
+  const price = `$${props.price.toFixed(2)}`;
+
   return (
     <Col>
-      <Card>
-        <Card.Img variant="top" src={image} />
+      <Card className={classes.card}>
+        <Card.Img variant="top" src={props.image} />
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Card.Title className={classes.title}>
+            {props.name} <span className={classes.price}>{price}</span>
+          </Card.Title>
+          <Card.Text>{props.description}</Card.Text>
+          <ProductAmount />
+          <Button variant="primary" className={classes.addcart}>
+            ADD TO CART
+          </Button>
         </Card.Body>
       </Card>
     </Col>
@@ -23,22 +29,3 @@ const Product = (props) => {
 };
 
 export default Product;
-
-{
-  /* <Row xs={1} md={2} className="g-4">
-  {Array.from({ length: 4 }).map((_, idx) => (
-    <Col>
-      <Card>
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a longer card with supporting text below as a natural
-            lead-in to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </Col>
-  ))}
-</Row> */
-}

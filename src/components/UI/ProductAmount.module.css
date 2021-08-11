@@ -1,0 +1,26 @@
+.amount {
+  width: 40px;
+  border: none;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.button {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  background-color: grey;
+  border: none;
+  border-radius: 50%;
+}
