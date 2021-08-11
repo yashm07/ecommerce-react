@@ -3,7 +3,7 @@
 }
 
 #cart {
-  color: rgb(104, 104, 104);
+  color: rgb(77, 77, 77);
   font-weight: 500;
   font-size: 1.1em;
   text-transform: uppercase;
@@ -14,7 +14,7 @@
   margin-left: 5px;
   width: 22px;
   height: 22px;
-  color: rgb(104, 104, 104);
+  color: rgb(77, 77, 77);
 }
 
 #navbar {

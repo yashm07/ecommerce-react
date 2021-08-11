@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import BackgroundImage from "../Layout/BackgroundImage";
+import BackgroundImage from "../Layout/BackgroundImage/BackgroundImage";
 import AvailableProducts from "./AvailableProducts";
 
 import classes from "./Products.module.css";

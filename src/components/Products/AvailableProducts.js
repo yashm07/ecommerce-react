@@ -1,3 +1,6 @@
+import Product from "./Product/Product";
+import Row from "react-bootstrap/Row";
+
 const DUMMY_DATA = [
   {
     id: "p1",
@@ -32,15 +35,16 @@ const DUMMY_DATA = [
 ];
 
 // ADD IN IMAGES
+// Get rid of ul if not using li
 
 const AvailableProducts = () => {
   return (
     <section>
-      <ul>
+      <Row xs={1} md={2} lg={3} className="g-4">
         {DUMMY_DATA.map((product) => (
-          <li>{product.name}</li>
+          <Product />
         ))}
-      </ul>
+      </Row>
     </section>
   );
 };
