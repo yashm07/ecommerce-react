@@ -18,21 +18,21 @@ const Footer = () => {
     <div className={classes.footer}>
       <Container>
         <Row className="align-items-center">
-          <Col md={7}>
+          <Col md={6}>
             <img src={testlogo} className={classes.logo} alt="Test logo" />
             <p className={classes["company-description"]}>
               | Selling the greatest products.
             </p>
-            <div>
-              <AiFillLinkedin className={classes.icon} />
-              <AiOutlineInstagram className={classes.icon} />
-              <AiFillFacebook className={classes.icon} />
-              <AiFillTwitterCircle className={classes.icon} />
-            </div>
           </Col>
           <Col>Terms</Col>
           <Col>Privacy</Col>
           <Col>Conditions</Col>
+          <Col>
+            <AiFillLinkedin className={classes.icon} />
+            <AiOutlineInstagram className={classes.icon} />
+            <AiFillFacebook className={classes.icon} />
+            <AiFillTwitterCircle className={classes.icon} />
+          </Col>
         </Row>
       </Container>
     </div>
