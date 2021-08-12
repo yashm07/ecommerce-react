@@ -7,13 +7,16 @@ import Header from "./components/Layout/Header";
 import Container from "react-bootstrap/Container";
 import Products from "./components/Products/Products";
 import Footer from "./components/Layout/Footer/Footer";
+import ProductItem from "./components/Cart/ProductItem/ProductItem";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
     <Fragment>
       <Container>
         <Header />
-        <Products />
+        {/* <Products /> */}
+        <Cart />
       </Container>
       <Footer />
     </Fragment>

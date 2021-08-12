@@ -1,0 +1,17 @@
+.price {
+  float: right;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.title {
+  font-weight: 400;
+}
+
+.card {
+  border: none;
+}
+
+.description {
+  font-weight: 300;
+}

@@ -16,6 +16,7 @@ const ProductAmount = (props) => {
         id="amount"
         type="number"
         defaultValue="1"
+        value={props.value}
         className={classes.amount}
       />
       {/* </div> */}
