@@ -66,6 +66,7 @@ const AvailableProducts = () => {
         {DUMMY_DATA.map((product) => (
           <Product
             key={product.id}
+            id={product.id}
             name={product.name}
             price={product.price}
             description={product.description}
