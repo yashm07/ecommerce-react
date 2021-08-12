@@ -2,7 +2,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import ProductAmount from "../../UI/ProductAmount";
+import Button from "react-bootstrap/Button";
 import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
@@ -23,7 +23,21 @@ const ProductItem = (props) => {
               <Card.Text className={classes.description}>
                 {props.description}
               </Card.Text>
-              <ProductAmount value={props.amount} />
+              <Button variant="primary" className={classes.button}>
+                +
+              </Button>
+              {/* <label htmlFor="amount"></label>
+              <input
+                id="amount"
+                type="number"
+                defaultValue="1"
+                value={props.value}
+                className={classes.amount}
+              /> */}
+              <span className={classes.amount}>{props.amount}</span>
+              <Button variant="primary" className={classes.button}>
+                -
+              </Button>
             </Card.Body>
           </Col>
         </Row>
