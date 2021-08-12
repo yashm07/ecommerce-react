@@ -6,3 +6,8 @@
 #root {
   font-family: "Quicksand", sans-serif;
 }
+
+html,
+body {
+  height: 100%;
+}

@@ -1,22 +1,18 @@
-import { Fragment } from "react";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import image from "../../../assets/testimage.jpeg";
 import ProductAmount from "../../UI/ProductAmount";
-
 import classes from "./ProductItem.module.css";
 
 const ProductItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
   return (
     <Container>
-      <Card style={{ width: "50rem" }} className={classes.card}>
+      <Card className={classes.card}>
         <Row className="no-gutters">
           <Col md={5} lg={5}>
-            <Card.Img variant="top" src={image} />
+            <Card.Img variant="top" src={props.image} />
           </Col>
           <Col>
             <Card.Body>

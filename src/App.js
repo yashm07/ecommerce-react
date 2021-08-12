@@ -5,9 +5,8 @@ import Header from "./components/Layout/Header";
 
 // TEMPORARY
 import Container from "react-bootstrap/Container";
-import Products from "./components/Products/Products";
-import Footer from "./components/Layout/Footer/Footer";
-import ProductItem from "./components/Cart/ProductItem/ProductItem";
+// import Products from "./components/Products/Products";
+// import Footer from "./components/Layout/Footer/Footer";
 import Cart from "./components/Cart/Cart";
 
 function App() {
@@ -18,7 +17,7 @@ function App() {
         {/* <Products /> */}
         <Cart />
       </Container>
-      <Footer />
+      {/* <Footer /> */}
     </Fragment>
   );
 }
