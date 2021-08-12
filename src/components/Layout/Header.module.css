@@ -26,3 +26,7 @@
     margin: 20px 0;
   }
 }
+
+.badge {
+  margin: 0 1px 0 5px;
+}
