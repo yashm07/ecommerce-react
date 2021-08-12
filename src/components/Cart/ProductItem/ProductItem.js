@@ -23,7 +23,11 @@ const ProductItem = (props) => {
               <Card.Text className={classes.description}>
                 {props.description}
               </Card.Text>
-              <Button variant="primary" className={classes.button}>
+              <Button
+                variant="primary"
+                className={classes.button}
+                onClick={props.onAdd}
+              >
                 +
               </Button>
               {/* <label htmlFor="amount"></label>
@@ -35,7 +39,11 @@ const ProductItem = (props) => {
                 className={classes.amount}
               /> */}
               <span className={classes.amount}>{props.amount}</span>
-              <Button variant="primary" className={classes.button}>
+              <Button
+                variant="primary"
+                className={classes.button}
+                onClick={props.onRemove}
+              >
                 -
               </Button>
             </Card.Body>

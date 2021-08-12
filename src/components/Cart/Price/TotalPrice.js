@@ -8,7 +8,10 @@ import classes from "./TotalPrice.module.css";
 const TotalPrice = () => {
   const cartCtx = useContext(CartContext);
 
-  const subtotal = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const subtotal = `$${cartCtx.subAmount.toFixed(2)}`;
+  const tax = `$${cartCtx.taxAmount.toFixed(2)}`;
+  const shipping = `$${cartCtx.shippingAmount.toFixed(2)}`;
+  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
 
   return (
@@ -18,14 +21,14 @@ const TotalPrice = () => {
       </h3>
       <hr className={classes.line} />
       <h3 className={classes.subheading2}>
-        Shipping<span className={classes.price}>$12.99</span>
+        Shipping<span className={classes.price}>{shipping}</span>
       </h3>
       <h3 className={classes.subheading3}>
-        Tax<span className={classes.price}>$2.99</span>
+        Tax<span className={classes.price}>{tax}</span>
       </h3>
       <hr className={classes.line} />
       <h3 className={classes.total}>
-        Total<span className={classes.price}>$39.99</span>
+        Total<span className={classes.price}>{totalAmount}</span>
       </h3>
       {hasItems && (
         <Button variant="primary" className={classes.checkout}>

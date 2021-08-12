@@ -4,14 +4,31 @@ import CartContext from "./cart-context";
 
 const defaultCartState = {
   items: [],
+  subAmount: 0,
+  taxAmount: 0,
+  shippingAmount: 0,
   totalAmount: 0,
 };
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD") {
-    const updatedTotalAmount =
-      state.totalAmount + action.item.price * action.item.amount;
+    // pricing panel
+    const updatedSubAmount =
+      state.subAmount + action.item.price * action.item.amount;
 
+    let updatedShippingAmount;
+    if (updatedSubAmount === 0) {
+      updatedShippingAmount = 0;
+    } else {
+      updatedShippingAmount = 10;
+    }
+
+    const updatedTaxAmount = updatedSubAmount * 0.13;
+
+    const updatedTotalAmount =
+      updatedSubAmount + updatedShippingAmount + updatedTaxAmount;
+
+    // adding cart items
     const existingItemIndex = state.items.findIndex(
       (cartitem) => cartitem.id === action.item.id
     );
@@ -31,9 +48,51 @@ const cartReducer = (state, action) => {
 
     return {
       items: updatedItems,
+      subAmount: updatedSubAmount,
+      taxAmount: updatedTaxAmount,
+      shippingAmount: updatedShippingAmount,
       totalAmount: updatedTotalAmount,
     };
   }
+
+  if (action.type === "REMOVE") {
+    const existingItemIndex = state.items.findIndex(
+      (cartitem) => cartitem.id === action.id
+    );
+    const existingItem = state.items[existingItemIndex];
+
+    // pricing panel
+    const updatedSubAmount = state.subAmount - existingItem.price;
+
+    let updatedShippingAmount;
+    if (updatedSubAmount === 0) {
+      updatedShippingAmount = 0;
+    } else {
+      updatedShippingAmount = 10;
+    }
+
+    const updatedTaxAmount = updatedSubAmount * 0.13;
+
+    const updatedTotalAmount =
+      updatedSubAmount + updatedShippingAmount + updatedTaxAmount;
+    //   removing cart items
+    let updatedItems;
+    if (existingItem.amount === 1) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+      updatedItems = [...state.items];
+      updatedItems[existingItemIndex] = updatedItem;
+    }
+    return {
+      items: updatedItems,
+      subAmount: updatedSubAmount,
+      taxAmount: updatedTaxAmount,
+      shippingAmount: updatedShippingAmount,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
   return defaultCartState;
 };
 
@@ -55,6 +114,9 @@ const CartProvider = (props) => {
 
   const cartContext = {
     items: cartState.items,
+    subAmount: cartState.subAmount,
+    taxAmount: cartState.taxAmount,
+    shippingAmount: cartState.shippingAmount,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,

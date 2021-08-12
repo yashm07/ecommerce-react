@@ -31,9 +31,13 @@ import CartContext from "../../store/cart-context";
 const Cart = () => {
   const cartCtx = useContext(CartContext);
 
-  const cartItemAddHandler = (item) => {};
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
 
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
   return (
     <Row className="g-4">
