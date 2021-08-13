@@ -55,6 +55,7 @@ const Product = (props) => {
       amount: amount,
       price: props.price,
       description: props.description,
+      image: props.image,
     });
   };
 

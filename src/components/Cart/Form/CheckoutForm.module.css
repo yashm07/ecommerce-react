@@ -1,0 +1,31 @@
+.panel {
+  border: 1px solid black;
+  border-radius: 1em;
+  padding: 50px 40px 40px;
+}
+
+.submit {
+  font-size: 1em;
+  padding: 10px 25px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  background: rgb(65, 65, 65);
+  width: 45%;
+  margin: 15px 10px 0;
+}
+
+.cancel {
+  font-size: 1em;
+  padding: 10px 25px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  background: rgb(65, 65, 65);
+  width: 45%;
+  margin: 15px 10px 0;
+}
+
+.button {
+  text-align: center;
+}

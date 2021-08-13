@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // import image from "../../assets/testimage.jpeg";
 import ProductItem from "./ProductItem/ProductItem";
@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TotalPrice from "./Price/TotalPrice";
 import CartContext from "../../store/cart-context";
+import CheckoutForm from "./Form/CheckoutForm";
 
 // const cartItems = [
 //   {
@@ -30,6 +31,7 @@ import CartContext from "../../store/cart-context";
 
 const Cart = () => {
   const cartCtx = useContext(CartContext);
+  const [checkout, setCheckout] = useState(false);
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
@@ -37,6 +39,14 @@ const Cart = () => {
 
   const cartItemRemoveHandler = (id) => {
     cartCtx.removeItem(id);
+  };
+
+  const checkoutHandler = () => {
+    setCheckout(true);
+  };
+
+  const cancelHandler = () => {
+    setCheckout(false);
   };
 
   return (
@@ -56,7 +66,8 @@ const Cart = () => {
         ))}
       </Col>
       <Col>
-        <TotalPrice />
+        {!checkout && <TotalPrice onCheckout={checkoutHandler} />}
+        {checkout && <CheckoutForm onCancel={cancelHandler} />}
       </Col>
     </Row>
   );

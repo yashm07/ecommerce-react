@@ -5,7 +5,7 @@ import CartContext from "../../../store/cart-context";
 
 import classes from "./TotalPrice.module.css";
 
-const TotalPrice = () => {
+const TotalPrice = (props) => {
   const cartCtx = useContext(CartContext);
 
   const subtotal = `$${cartCtx.subAmount.toFixed(2)}`;
@@ -31,7 +31,11 @@ const TotalPrice = () => {
         Total<span className={classes.price}>{totalAmount}</span>
       </h3>
       {hasItems && (
-        <Button variant="primary" className={classes.checkout}>
+        <Button
+          variant="primary"
+          className={classes.checkout}
+          onClick={props.onCheckout}
+        >
           CHECKOUT
         </Button>
       )}
