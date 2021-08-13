@@ -39,6 +39,12 @@ const CheckoutForm = (props) => {
     if (!formValid) {
       return;
     }
+
+    props.onConfirm({
+      name: userName,
+      email: userEmail,
+      address: userAddress,
+    });
     // add form logic
   };
 

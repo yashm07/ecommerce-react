@@ -49,6 +49,16 @@ const Cart = () => {
     setCheckout(false);
   };
 
+  const submitOrderHandler = (userData) => {
+    fetch(process.env.REACT_APP_DATABASE_URL + "orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+      }),
+    });
+  };
+
   return (
     <Row className="g-4">
       <Col md={6}>
@@ -67,7 +77,12 @@ const Cart = () => {
       </Col>
       <Col>
         {!checkout && <TotalPrice onCheckout={checkoutHandler} />}
-        {checkout && <CheckoutForm onCancel={cancelHandler} />}
+        {checkout && (
+          <CheckoutForm
+            onCancel={cancelHandler}
+            onConfirm={submitOrderHandler}
+          />
+        )}
       </Col>
     </Row>
   );
