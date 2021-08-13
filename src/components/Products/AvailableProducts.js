@@ -1,69 +1,61 @@
 import Product from "./Product/Product";
 import Row from "react-bootstrap/Row";
+import Spinner from "react-bootstrap/Spinner";
 
-import image from "./Product/testimage.jpeg";
+import classes from "./AvailableProducts.module.css";
 
-// For now, using same image change when connecting to database
-
-const DUMMY_DATA = [
-  {
-    id: "p1",
-    name: "Keyboard",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 29.99,
-    image: image,
-  },
-  {
-    id: "p2",
-    name: "Arduino",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 59.99,
-    image: image,
-  },
-  {
-    id: "p3",
-    name: "Batteries",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 7.99,
-    image: image,
-  },
-  {
-    id: "p4",
-    name: "Mouse",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 29.99,
-    image: image,
-  },
-  {
-    id: "p5",
-    name: "Jumper Wires",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 10.99,
-    image: image,
-  },
-  {
-    id: "p6",
-    name: "Motors",
-    description:
-      "Some quick example text to build on the card title and make up the bulk of the card's content.",
-    price: 14.99,
-    image: image,
-  },
-];
-
-// ADD IN IMAGES
-// Get rid of ul if not using li
+import { useEffect, useState } from "react";
 
 const AvailableProducts = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [httpError, setHttpError] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch(
+        process.env.REACT_APP_DATABASE_URL + "Products.json"
+      );
+
+      if (!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+
+      const responseData = await response.json();
+
+      const loadedProducts = [];
+
+      for (const key in responseData) {
+        loadedProducts.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+          image: responseData[key].image,
+        });
+      }
+      setProducts(loadedProducts);
+      setLoading(false);
+    };
+
+    fetchProducts().catch((error) => {
+      setLoading(false);
+      setHttpError(error.message);
+    });
+  }, []);
+
+  const spinner = loading && (
+    <Spinner animation="border" role="status" className={classes.loading}>
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  );
+
+  const error = httpError && <p>{httpError}</p>;
+
   return (
     <section>
       <Row xs={1} md={2} lg={3} className="g-4">
-        {DUMMY_DATA.map((product) => (
+        {products.map((product) => (
           <Product
             key={product.id}
             id={product.id}
@@ -73,6 +65,8 @@ const AvailableProducts = () => {
             image={product.image}
           />
         ))}
+        {spinner}
+        {error}
       </Row>
     </section>
   );
