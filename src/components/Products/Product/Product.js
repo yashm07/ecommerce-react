@@ -72,7 +72,7 @@ const Product = (props) => {
           </Card.Text>
           <form onSubmit={submitHandler}>
             <Button
-              variant="primary"
+              variant="success"
               className={classes.button}
               onClick={addItem}
               type="button"
@@ -90,14 +90,14 @@ const Product = (props) => {
               min="1"
             />
             <Button
-              variant="primary"
+              variant="success"
               className={classes.button}
               onClick={removeItem}
               type="button"
             >
               -
             </Button>
-            <Button variant="primary" className={classes.addcart} type="submit">
+            <Button variant="success" className={classes.addcart} type="submit">
               ADD TO CART
             </Button>
             {!amountIsValid && <p>Please enter a valid amount.</p>}

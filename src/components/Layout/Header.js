@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import testLogo from "../../assets/testlogo.png";
+import Logo from "../../assets/logo.png";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -29,7 +29,7 @@ const Header = (props) => {
     <Navbar collapseOnSelect expand="lg" id={classes.navbar}>
       <Container>
         <Navbar.Brand onClick={props.onHideCart} href="#">
-          <img src={testLogo} className={classes.logo} alt="Company logo" />
+          <img src={Logo} className={classes.logo} alt="Company logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

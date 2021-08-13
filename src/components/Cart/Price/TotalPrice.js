@@ -32,7 +32,7 @@ const TotalPrice = (props) => {
       </h3>
       {hasItems && (
         <Button
-          variant="primary"
+          variant="success"
           className={classes.checkout}
           onClick={props.onCheckout}
         >

@@ -75,14 +75,14 @@ const CheckoutForm = (props) => {
       </Form.Group>
       <div className={classes.button}>
         <Button
-          variant="primary"
+          variant="success"
           type="button"
           className={classes.cancel}
           onClick={props.onCancel}
         >
           Cancel
         </Button>
-        <Button variant="primary" type="submit" className={classes.submit}>
+        <Button variant="success" type="submit" className={classes.submit}>
           Submit
         </Button>
       </div>

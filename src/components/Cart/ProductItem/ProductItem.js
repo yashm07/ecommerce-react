@@ -24,7 +24,7 @@ const ProductItem = (props) => {
                 {props.description}
               </Card.Text>
               <Button
-                variant="primary"
+                variant="success"
                 className={classes.button}
                 onClick={props.onAdd}
               >
@@ -40,7 +40,7 @@ const ProductItem = (props) => {
               /> */}
               <span className={classes.amount}>{props.amount}</span>
               <Button
-                variant="primary"
+                variant="success"
                 className={classes.button}
                 onClick={props.onRemove}
               >

@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import TotalPrice from "./Price/TotalPrice";
 import CartContext from "../../store/cart-context";
 import CheckoutForm from "./Form/CheckoutForm";
+import classes from "./Cart.module.css";
 
 // const cartItems = [
 //   {
@@ -32,6 +33,8 @@ import CheckoutForm from "./Form/CheckoutForm";
 const Cart = () => {
   const cartCtx = useContext(CartContext);
   const [checkout, setCheckout] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitData, setSubmitData] = useState(false);
 
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
@@ -49,41 +52,52 @@ const Cart = () => {
     setCheckout(false);
   };
 
-  const submitOrderHandler = (userData) => {
-    fetch(process.env.REACT_APP_DATABASE_URL + "orders.json", {
+  const submitOrderHandler = async (userData) => {
+    setSubmitting(true);
+    await fetch(process.env.REACT_APP_DATABASE_URL + "orders.json", {
       method: "POST",
       body: JSON.stringify({
         user: userData,
         orderedItems: cartCtx.items,
       }),
     });
+    setSubmitting(false);
+    setSubmitData(true);
+    cartCtx.clearCart();
   };
 
   return (
     <Row className="g-4">
       <Col md={6}>
-        {cartCtx.items.map((cartitem) => (
-          <ProductItem
-            key={cartitem.id}
-            name={cartitem.name}
-            price={cartitem.price}
-            description={cartitem.description}
-            image={cartitem.image}
-            amount={cartitem.amount}
-            onAdd={cartItemAddHandler.bind(null, cartitem)}
-            onRemove={cartItemRemoveHandler.bind(null, cartitem.id)}
-          />
-        ))}
+        {!submitData &&
+          cartCtx.items.map((cartitem) => (
+            <ProductItem
+              key={cartitem.id}
+              name={cartitem.name}
+              price={cartitem.price}
+              description={cartitem.description}
+              image={cartitem.image}
+              amount={cartitem.amount}
+              onAdd={cartItemAddHandler.bind(null, cartitem)}
+              onRemove={cartItemRemoveHandler.bind(null, cartitem.id)}
+            />
+          ))}
       </Col>
       <Col>
-        {!checkout && <TotalPrice onCheckout={checkoutHandler} />}
-        {checkout && (
+        {!submitting && !submitData && !checkout && (
+          <TotalPrice onCheckout={checkoutHandler} />
+        )}
+        {!submitting && !submitData && checkout && (
           <CheckoutForm
             onCancel={cancelHandler}
             onConfirm={submitOrderHandler}
           />
         )}
+        {submitting && <p>Sending order request....</p>}
       </Col>
+      {!submitting && submitData && (
+        <p className={classes.confirmation}>Order has been sent!</p>
+      )}
     </Row>
   );
 };
