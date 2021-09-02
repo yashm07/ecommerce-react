@@ -1,6 +1,6 @@
-# Ecommerce React Application
+# E-commerce React Application
 
-A ecommerce application that lets you shop for your favourite hobby electronic items! Built this project using React.js and Firebase for storing the data. 
+An e-commerce application that lets you shop for your favourite hobby electronic items! The goal of this project was to test my React skills as well as get familiar with Firebase.
 
 ## Technologies Used
 * React.js
